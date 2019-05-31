@@ -12,20 +12,41 @@ namespace SongSwears
     {
         static void Main(string[] args)
         {
+            
             //var songAnalysis = new SongAnalysis("Kazik", "12 groszy");
-            //var songAnalysis = new SongAnalysis("2pac", "changes");
-            var tekst = "kurwa zgaduje!";
+            //var song = new Song("2pac", "changes");
+            var song = new Song("Eminem", "Stan");
+            // var tekst = "kurwa zgaduje!";
             var censor = new Censor();
-            Console.WriteLine(censor.Fix(tekst));
+
+            var eminemSwearStats = new SwearStats();
+            eminemSwearStats.AddSwearsFrom(song);
+            Console.WriteLine(censor.Fix(song.lyrics));
 
             Console.ReadLine();
         }
     }
 
-    internal class Censor
+    public class SwearStats:Censor
+    {
+        public SwearStats()
+        {
+            Dictionary<string, int> allSwears = new Dictionary<string, int>();
+        }
+
+        public void AddSwearsFrom(Song song)
+        {
+            foreach (var word in badWords)
+        {
+            song.occurrences = song.CountOccurrences(word);
+        }
+        }
+    }
+
+    public class Censor
     {
         string[] badwords;
-        public Censor()
+        protected Censor()
         {
             var profanitesFile = File.ReadAllText("profanities.txt");
             profanitesFile = profanitesFile.Replace("*", "");

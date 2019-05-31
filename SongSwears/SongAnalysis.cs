@@ -4,17 +4,29 @@ using System.Net;
 
 namespace SongSwears
 {
-    internal class SongAnalysis
+    public class Song
     {
+        public string title;
+        public string artist;
+        public string lyrics;
 
-        public SongAnalysis(string band, string songName)
+        public Song(string band, string songName)
         {
             var browser = new WebClient();
             string url = "https://api.lyrics.ovh/v1/"+band+"/"+songName;
             var json = browser.DownloadString(url);
-            var lyrics = JsonConvert.DeserializeObject<LyricsovhResponse>(json);
-            Console.Write(lyrics.lyrics);
-            Console.ReadKey();
+            var lyricsData = JsonConvert.DeserializeObject<LyricsovhResponse>(json);
+
+            title = songName;
+            artist = band;
+            lyrics = lyricsData.lyrics;
+        }
+
+        public object CountOccurrences { get; internal set; }
+
+        internal object CountOccurrences(object word)
+        {
+            throw new NotImplementedException();
         }
     }
 }
