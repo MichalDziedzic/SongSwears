@@ -8,6 +8,21 @@ D:\Users\kamil.jamroz\Desktop\songswears\SongSwears\obj\Debug\SongSwears.pdb
 D:\Users\kamil.jamroz\Desktop\songswears\SongSwears\bin\Debug\Newtonsoft.Json.dll
 D:\Users\kamil.jamroz\Desktop\songswears\SongSwears\bin\Debug\Newtonsoft.Json.xml
 D:\Users\kamil.jamroz\Desktop\songswears\SongSwears\obj\Debug\SongSwears.csproj.CopyComplete
+D:\Users\maciej.duda.WSEI\Desktop\songswears\SongSwears\obj\Debug\SongSwears.csprojAssemblyReference.cache
+D:\Users\maciej.duda.WSEI\Desktop\songswears\SongSwears\obj\Debug\SongSwears.csproj.CoreCompileInputs.cache
+D:\Users\maciej.duda.WSEI\Desktop\songswears\SongSwears\obj\Debug\SongSwears.exe
+D:\Users\maciej.duda.WSEI\Desktop\songswears\SongSwears\obj\Debug\SongSwears.pdb
+D:\Users\maciej.duda.WSEI\Desktop\Nowy folder\songwears\SongSwears\bin\Debug\profanities.txt
+D:\Users\maciej.duda.WSEI\Desktop\Nowy folder\songwears\SongSwears\bin\Debug\SongSwears.exe.config
+D:\Users\maciej.duda.WSEI\Desktop\Nowy folder\songwears\SongSwears\bin\Debug\SongSwears.exe
+D:\Users\maciej.duda.WSEI\Desktop\Nowy folder\songwears\SongSwears\bin\Debug\SongSwears.pdb
+D:\Users\maciej.duda.WSEI\Desktop\Nowy folder\songwears\SongSwears\bin\Debug\Newtonsoft.Json.dll
+D:\Users\maciej.duda.WSEI\Desktop\Nowy folder\songwears\SongSwears\bin\Debug\Newtonsoft.Json.xml
+D:\Users\maciej.duda.WSEI\Desktop\Nowy folder\songwears\SongSwears\obj\Debug\SongSwears.csprojAssemblyReference.cache
+D:\Users\maciej.duda.WSEI\Desktop\Nowy folder\songwears\SongSwears\obj\Debug\SongSwears.csproj.CoreCompileInputs.cache
+D:\Users\maciej.duda.WSEI\Desktop\Nowy folder\songwears\SongSwears\obj\Debug\SongSwears.csproj.CopyComplete
+D:\Users\maciej.duda.WSEI\Desktop\Nowy folder\songwears\SongSwears\obj\Debug\SongSwears.exe
+D:\Users\maciej.duda.WSEI\Desktop\Nowy folder\songwears\SongSwears\obj\Debug\SongSwears.pdb
 D:\Users\michal.dziedzic.WSEI\Desktop\ProjectSong\SongSwears\bin\Debug\profanities.txt
 D:\Users\michal.dziedzic.WSEI\Desktop\ProjectSong\SongSwears\bin\Debug\SongSwears.exe.config
 D:\Users\michal.dziedzic.WSEI\Desktop\ProjectSong\SongSwears\bin\Debug\SongSwears.exe

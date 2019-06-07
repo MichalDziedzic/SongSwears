@@ -1,80 +1,96 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
+ 
 namespace SongSwears
 {
     class Program
     {
         static void Main(string[] args)
         {
-            
-            //var songAnalysis = new SongAnalysis("Kazik", "12 groszy");
-            //var song = new Song("2pac", "changes");
-            var song = new Song("Eminem", "Stan");
-            // var tekst = "kurwa zgaduje!";
-            var censor = new Censor();
+            //var eminemSwearStats = new SwearStas();
+            var eminemSwearStats = new RapperSwearsStats("Eminem");
+            // var song = new Song("Eminem", "Stan");
+            // eminemSwearStats.AddSwearsFrom(song);
+            eminemSwearStats.AddSong("Stan");
 
-            var eminemSwearStats = new SwearStats();
-            eminemSwearStats.AddSwearsFrom(song);
-            Console.WriteLine(censor.Fix(song.lyrics));
+            var twoPacStats = new RapperSwearsStats("2pac");
+            twoPacStats.AddSong("changes");
+            var rappers = new List<RapperSwearsStats>();
+            rappers.Add(eminemSwearStats);
+            rappers.Add(twoPacStats);
 
-            Console.ReadLine();
+            var uknowSong = new Song("Eminem","Monster");
+            var tinder = new RapperTinder(rappers, uknowSong);
+
+
+
+       
+            Console.ReadKey();
+        }
+
+        
+    }
+
+    public class RapperSwearsStats : SwearStas
+    {
+        public string name;
+        public RapperSwearsStats(string name)
+        {
+            this.name = name;
+        }
+
+        public void AddSong(string title)
+        {
+            var song = new Song(name, title);
+            AddSwearsFrom(song);
         }
     }
 
-    public class SwearStats:Censor
+    public class SwearStas:Censor
     {
-        public SwearStats()
-        {
-            Dictionary<string, int> allSwears = new Dictionary<string, int>();
-        }
-
+        Dictionary<string, int> allSwears = new Dictionary<string, int>();
+ 
         public void AddSwearsFrom(Song song)
         {
-            foreach (var word in badWords)
-        {
-            song.occurrences = song.CountOccurrences(word);
-        }
-        }
-    }
-
-    public class Censor
-    {
-        string[] badwords;
-        protected Censor()
-        {
-            var profanitesFile = File.ReadAllText("profanities.txt");
-            profanitesFile = profanitesFile.Replace("*", "");
-            profanitesFile = profanitesFile.Replace("(", "");
-            profanitesFile = profanitesFile.Replace(")", "");
-            profanitesFile = profanitesFile.Replace("\"", "");
-            badwords = profanitesFile.Split(',');
-
-            
-        }
-
-        public string Fix(string tekst)
-        {
-            foreach(var word in badwords)
+            foreach(var word in badWords)
             {
-                tekst = ReplaceBadWord(tekst, word);
+              var occurences =  song.CountOccurrences(word);
+                if (occurences > 0)
+                {
+                    if (!allSwears.ContainsKey(word))
+                        allSwears.Add(word, 0);
+                    allSwears[word] += occurences;
+                }
             }
-            return tekst;
+        }
+ 
+         public void ShowSummary()
+        {
+            foreach(var item in allSwears)
+            {
+                Console.WriteLine(item.Key + "-" + item.Value);
+            }
         }
 
-        private static string ReplaceBadWord(string tekst, string word)
+        public int FindCommonSwearsScore(SwearStas anotherStats)
         {
-            var pattern = "\\b" + word + "\\b";
-            return Regex.Replace(tekst, pattern, "____",RegexOptions.IgnoreCase);
-
-            //tekst = tekst.Replace(word, "WSEI");
-            //return tekst;
+            int score = 0;
+           foreach(var myWord in allSwears)
+            {
+                if(anotherStats.allSwears.ContainsKey(myWord.Key))
+                {
+                    score++;
+                }
+                else
+                {
+                    score--;
+                }
+            }
+            return score;
         }
     }
-    
+ 
 }
