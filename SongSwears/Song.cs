@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SearchingCurses;
 using System;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -16,7 +17,9 @@ namespace SongSwears
         {
             var browser = new WebClient();
             string url = "https://api.lyrics.ovh/v1/"+band+"/"+songName;
-            var json = browser.DownloadString(url);
+            //string url= "https://wtfismyip.com/text" + band + "/" + songName;
+            // var json = browser.DownloadString(url);
+            var json = WebCache.GetOrDownload(url);
             var lyricsData = JsonConvert.DeserializeObject<LyricsovhResponse>(json);
 
             title = songName;

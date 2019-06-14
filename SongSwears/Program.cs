@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SearchingCurses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,24 +11,54 @@ namespace SongSwears
     {
         static void Main(string[] args)
         {
-            //var eminemSwearStats = new SwearStas();
-            var eminemSwearStats = new RapperSwearsStats("Eminem");
-            // var song = new Song("Eminem", "Stan");
-            // eminemSwearStats.AddSwearsFrom(song);
-            eminemSwearStats.AddSong("Stan");
+            
+             var eminemSwearStats = new RapperSwearsStats("Eminem");
+            
+             eminemSwearStats.AddSong("Stan");
+           // eminemSwearStats.AddSong("Stan");
+            eminemSwearStats.AddSong("Lose Yourself");
+            eminemSwearStats.AddSong("Not afraid");
+            eminemSwearStats.AddSong("The Real Slim Shady");
+            eminemSwearStats.AddSong("When I'm Gone");
 
             var twoPacStats = new RapperSwearsStats("2pac");
-            twoPacStats.AddSong("changes");
+             twoPacStats.AddSong("changes");
+            twoPacStats.AddSong("Dear Mama");
+            twoPacStats.AddSong("Hail Mary");
+
             var rappers = new List<RapperSwearsStats>();
-            rappers.Add(eminemSwearStats);
-            rappers.Add(twoPacStats);
+             rappers.Add(eminemSwearStats);
+             rappers.Add(twoPacStats);
 
-            var uknowSong = new Song("Eminem","Monster");
-            var tinder = new RapperTinder(rappers, uknowSong);
+             var uknowSong = new Song("Eminem","Monster");
+             var tinder = new RapperTinder(rappers, uknowSong);
 
 
 
-       
+
+            //Console.ReadKey();
+            //  Console.WriteLine(WebCache.GetOrDownload("https://wtfismyip.com/text"));
+            /*
+             *var eminemSwearStats = new RaperSwearStats("Eminem");
+              eminemSwearStats.AddSong("Stan");
+              eminemSwearStats.AddSong("Lose Yourself");
+              eminemSwearStats.AddSong("Not afraid");
+              eminemSwearStats.AddSong("The Real Slim Shady");
+
+              var twoPackStats = new RaperSwearStats("2Pac");
+              twoPackStats.AddSong("Changes");
+              twoPackStats.AddSong("Changes");
+              twoPackStats.AddSong("Changes");
+
+              var rapers = new List<RaperSwearStats>();
+              rapers.Add(eminemSwearStats);
+              rapers.Add(twoPackStats);
+
+              var unknownSong = new Song(band: "Eminem", song: "Monster");
+              var tinder = new RaperTinder(rapers, unknownSong);
+
+              Console.ReadKey();
+             */
             Console.ReadKey();
         }
 
@@ -84,10 +115,10 @@ namespace SongSwears
                 {
                     score++;
                 }
-                else
-                {
-                    score--;
-                }
+              //  else
+                //{
+                 //   score--;
+                //}
             }
             return score;
         }
