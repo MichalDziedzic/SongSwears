@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using SearchingCurses;
 using System;
 using System.Net;
 using System.Text.RegularExpressions;
+using SearchingCurses;
 
 namespace SongSwears
 {
@@ -15,16 +15,18 @@ namespace SongSwears
 
         public Song(string band, string songName)
         {
-            var browser = new WebClient();
+            
             string url = "https://api.lyrics.ovh/v1/"+band+"/"+songName;
-            //string url= "https://wtfismyip.com/text" + band + "/" + songName;
-            // var json = browser.DownloadString(url);
-            var json = WebCache.GetOrDownload(url);
+            var json =WebCache.GetOrDownload(url);
             var lyricsData = JsonConvert.DeserializeObject<LyricsovhResponse>(json);
 
             title = songName;
             artist = band;
             lyrics = lyricsData.lyrics;
+        }
+        public Song(string pastedText)
+        {
+            lyrics = pastedText;
         }
 
         public int CountOccurrences(string word)

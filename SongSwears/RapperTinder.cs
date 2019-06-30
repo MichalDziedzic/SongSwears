@@ -3,26 +3,35 @@ using System.Collections.Generic;
 
 namespace SongSwears
 {
-    internal class RapperTinder
+    class RapperTinder
     {
-        private List<RapperSwearsStats> rappers;
-        private Song uknowSong;
+         List<RapperSwearStats> rappers;
+         Song unknownSong;
 
-        public RapperTinder(List<RapperSwearsStats> rappers, Song uknowSong)
+        public RapperTinder(List<RapperSwearStats> rappers, Song unknownSong)
         {
             this.rappers = rappers;
-            this.uknowSong = uknowSong;
+            this.unknownSong = unknownSong;
 
+            var songSwearStats = new SwearStatistics();
+            songSwearStats.AddSwearsFrom(unknownSong);
 
-            var songSwearStats = new SwearStas();
-            songSwearStats.AddSwearsFrom(uknowSong);
+            var maxScore = 0;
+            var topRapperName = "";
 
-            foreach(var rapper in rappers)
+            foreach ( var rapper in rappers)
             {
-                var score = rapper.FindCommonSwearsScore(songSwearStats);
-                Console.WriteLine(rapper.name + ":" + score + "points.");
-            }
+                    var score = rapper.CompareWith(songSwearStats);
+                    Console.WriteLine(rapper.name + ":" + score + "points");
 
+                    if (score > maxScore)
+                    {
+                        maxScore = score;
+                        topRapperName = rapper.name;
+                    }
+                
+            }
+            Console.WriteLine($"{topRapperName}");
         }
     }
 }
